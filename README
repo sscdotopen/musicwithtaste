@@ -1,1 +1,33 @@
-This repository is used for the sample code of an article about getting started with the recommender support of Apache Mahout
+Used for the sample code of an article about getting started with the recommender support of Apache Mahout
+
+#### Requirements ######################################################################################################
+
+ * Java 6
+ * maven2
+ * python (with numpy)
+
+python and numpy are necessary to run the script to fetch the example dataset, in ubuntu you should already have
+python installed and can install numpy with "sudo apt-get install python-numpy"
+
+#### Preparing the data ################################################################################################
+
+Before you can run the examples, you have to download and prepare the music rating data.
+
+Create a directory where the data should be stored:
+
+	$mkdir /home/myuser/musicdata
+
+Run the python script from the tools folder, which will download and convert the data. Grab a coffee as this will take
+some time
+
+	$python ./tools/dataset.py /home/myuser/musicdata
+
+#### Running the examples ##############################################################################################
+
+In order to run the example that computes similar artists, type:
+
+	$mvn exec:java -Dexec.mainClass="io.ssc.musicwithtaste.examples.RunSimilarArtistsExample" -Dexec.args="/home/myuser/musicdata"
+
+In order to run the example that discovers new artists for some users, type:
+
+	$mvn exec:java -Dexec.mainClass="io.ssc.musicwithtaste.examples.RunDiscoverNewArtistsExample" -Dexec.args="/home/myuser/musicdata"
